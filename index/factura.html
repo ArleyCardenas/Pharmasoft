@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSoft - Factura</title>
+    <link rel="stylesheet" href="../styles/factura.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <script src="../Js/app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name">Santiago Benavides</div>
+                    <div class="profile-role">Empleado</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item"><a href="home.html">Home</a></div>
+                <div class="menu-item"><a href="clientes.html">Clientes</a></div>
+                <div class="menu-item"><a href="producto.html">Productos</a></div>
+                <div class="menu-item active">Factura</div>
+                <div class="menu-item"><a href="caja.html">Cierre de caja</a></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="page-title">Factura</h2>
+            <!-- Customer Information -->
+            <div class="customer-info">
+                <div class="info-row">
+                    <div class="info-label">Cliente:</div>
+                    <div class="info-value">Ubeimar Cardenas</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-group">
+                        <div class="info-label">Identificación:</div>
+                        <div class="info-value">1087980966</div>
+                    </div>
+                    <div class="info-group">
+                        <div class="info-label">Teléfono</div>
+                        <div class="info-value">3157701603</div>
+                    </div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-group">
+                        <div class="info-label">Dirección:</div>
+                        <div class="info-value">km 3 via las guacas</div>
+                    </div>
+                    <div class="info-group">
+                        <div class="info-label">Correo</div>
+                        <div class="info-value">ubeimarca@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Invoice Table -->
+            <div class="invoice-section">
+                <table class="invoice-table" id="invoice-table">
+                    <thead>
+                        <tr>
+                            <th class="column-quantity">Cantidad</th>
+                            <th class="column-product">Producto</th>
+                            <th class="column-unit-price">Vr Unitario</th>
+                            <th class="column-total-price">Vr Total</th>
+                            <th class="column-action"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       //productos agregados a la factura 
+                        
+                    </tbody>
+                </table>
+                
+                <div class="total-section">
+                    <div class="total-label">TOTAL A PAGAR:</div>
+                    <div class="total-value">270000</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="cancel-btn">Cancelar</button>
+                <button class="generate-btn">Generar Factura</button>
+                <a href="home.html" class="button" id="add-button-products">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </a>
+                
+            </div>
+            
+            <!-- Watermark -->
+            <div class="watermark">
+                <div class="watermark-content">PharmaSoft</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

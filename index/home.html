@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Farmacia</title>
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <script src="../Js/app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name">Santiago Benavides</div>
+                    <div class="profile-role">Empleado</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item active">Home</div>
+                <div class="menu-item"><a href="clientes.html">Clientes</a></div>
+                <div class="menu-item"><a href="producto.html">Productos</a></div>
+                <div class="menu-item"><a href="factura.html">Factura</a></div>
+                <div class="menu-item"><a href="caja.html">Cierre de caja</a></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <button class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="categories">
+                <div class="category active">Reciente</div>
+                <div class="category">Tabletas</div>
+                <div class="category">Jarabes</div>
+                <div class="category">Inyectables</div>
+                <div class="category">Cremas</div>
+            </div>
+
+            <!-- Products-->
+            <div class="products">
+                <!-- Products grid -->
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="availability">Disponibles: 100</div>
+                        <div class="product-image">
+                            <img src="../images/ibuprofeno.png" alt="Ibuprofeno" class="med-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">Ibuprofeno (400 mg, 30 tabletas)</div>
+                            <div class="product-price">$20.000</div>
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn">&#60;</button>
+                                    <span class="quantity">0</span>
+                                    <button class="quantity-btn">&#62;</button>
+                                </div>
+                                <button class="add-btn">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="availability">Disponibles: 100</div>
+                        <div class="product-image">
+                            <img src="../images/omeprazol.png" alt="Omeprazol" class="med-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">Omeprazol (20 mg, 14 cápsulas)</div>
+                            <div class="product-price">$45.000</div>
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn">&#60;</button>
+                                    <span class="quantity">0</span>
+                                    <button class="quantity-btn">&#62;</button>
+                                </div>
+                                <button class="add-btn">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="availability">Disponibles: 100</div>
+                        <div class="product-image">
+                            <img src="../images/paracetamol.png" alt="Paracetamol" class="med-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">Paracetamol (500 mg x 20 tabletas)</div>
+                            <div class="product-price">$30.000</div>
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn">&#60;</button>
+                                    <span class="quantity">0</span>
+                                    <button class="quantity-btn">&#62;</button>
+                                </div>
+                                <button class="add-btn">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="availability">Disponibles: 100</div>
+                        <div class="product-image">
+                            <img src="../images/atorbastatina.png" alt="Atorvastatina" class="med-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">Atorvastatina (20 mg, 30 tabletas)</div>
+                            <div class="product-price">$90.000</div>
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn">&#60;</button>
+                                    <span class="quantity">0</span>
+                                    <button class="quantity-btn">&#62;</button>
+                                </div>
+                                <button class="add-btn">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="availability">Disponibles: 100</div>
+                        <div class="product-image">
+                            <img src="..//images/metformina.png" alt="Metformina" class="med-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">Metformina (500 mg, 60 tabletas)</div>
+                            <div class="product-price">$55.000</div>
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn">&#60;</button>
+                                    <span class="quantity">0</span>
+                                    <button class="quantity-btn">&#62;</button>
+                                </div>
+                                <button class="add-btn">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Product 6 -->
+                    <div class="product-card large">
+                        <div class="availability">Disponibles: 100</div>
+                        <div class="product-image">
+                            <img src="../images/amoxicilina.png" alt="Amoxicilina" class="med-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">Amoxicilina (500 mg, 12 cápsulas)</div>
+                            <div class="product-price">$35.000</div>
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn">&#60;</button>
+                                    <span class="quantity">0</span>
+                                    <button class="quantity-btn">&#62;</button>
+                                </div>
+                                <button class="add-btn">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

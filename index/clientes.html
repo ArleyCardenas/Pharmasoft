@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSoft - Clientes</title>
+    <link rel="stylesheet" href="../styles/clientes.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="../Js/app.js" defer></script>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name">Santiago Benavides</div>
+                    <div class="profile-role">Empleado</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item"><a href="home.html">Home</a></div>
+                <div class="menu-item active">Clientes</div>
+                <div class="menu-item"><a href="producto.html">Productos</a></div>
+                <div class="menu-item"><a href="factura.html">Factura</a></div>
+                <div class="menu-item"><a href="caja.html">Cierre de caja</a></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <button class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <h2 class="page-title">Clientes</h2>
+            <!-- Clients Table -->
+            <div class="clients-section">
+                <table class="clients-table">
+                    <thead>
+                        <tr>
+                            <div class="atributo-tabla">
+                                <th class="column-id">Identificación</th>
+                                <th class="column-name">Nombre</th>
+                                <th class="column-action"></th>
+                            </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1059236474</td>
+                            <td>Santiago Casso</td>
+                            <td><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Watermark -->
+            <div class="watermark">
+                <div class="watermark-content">PharmaSoft</div>
+            </div>
+            <!-- Modal Clients -->
+            <div class="modal-clients" id="modal-clients">
+                <!-- contenido del modal -->
+                <div class="modal-content">
+                    <span class="close" id="close-clients">&times;</span>
+                    <h2 class="page-title">Registrar Cliente</h2>
+                    <form action="#" method="post">
+                        <div class="register-newClient">
+                            <input type="text" class="register-info" id="name" required placeholder="Nombre completo">
+                            <input type="number" class="register-info" id="identificacion" required placeholder="Numero de identificacion">
+                            <input type="tel" class="register-info" id="telefono" placeholder="Numero de telefono" pattern="[0-9]{10}" required>
+                            <input type="text" class="register-info" id="direccion" required placeholder="Direccion de residencia">
+                            <input type="email" class="register-info" id="correo" required placeholder="Correo electronico">
+                            <button type="submit" id="Btn-aceptar">Aceptar</button>
+                        </div>
+                        
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- Modal update -->
+            <div class="modal-clients" id="modal-clients-update">
+                <!-- contenido del modal -->
+                <div class="modal-content">
+                    <span class="close" id="close-clients-update">&times;</span>
+                    <h2 class="page-title">Actualizar información</h2>
+                    <form action="#" method="post">
+                        <div class="register-newClient">
+                            <input type="text" class="register-info" id="name" required placeholder="Nombre completo">
+                            <input type="number" class="register-info" id="identificacion" required placeholder="Numero de identificacion">
+                            <input type="tel" class="register-info" id="telefono" placeholder="Numero de telefono" pattern="[0-9]{10}" required>
+                            <input type="text" class="register-info" id="direccion" required placeholder="Direccion de residencia">
+                            <input type="email" class="register-info" id="correo" required placeholder="Correo electronico">
+                            <button type="submit" id="Btn-aceptar">Aceptar</button>
+                        </div>
+                        
+                    </form>
+
+                </div>
+
+            </div>
+            
+            <!-- Add Button -->
+            <button class="button" id="add-button-clients">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
