@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="../Js/app.js" defer></script>
-    <script src="../Js/app.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -48,65 +47,85 @@
             </div>
             <h1 class="page-title">Productos</h1> 
             
-            <!-- Product Table -->
-            <div class="product-section">
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th class="column-name">Nombre</th>
-                            <th class="column-quantity">Cantidad/unidad</th>
-                            <th class="column-action"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Acetaminofen</td>
-                            <td>20</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Paracetamol</td>
-                            <td>15</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Ibuprofeno</td>
-                            <td>35</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Pangetan</td>
-                            <td>14</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Lomotil</td>
-                            <td>17</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Pax Día</td>
-                            <td>23</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Pax Noche</td>
-                            <td>24</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Amoxicilina</td>
-                            <td>3</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Gripofen</td>
-                            <td>4</td>
-                            <td><button class="update-btn" ><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<!-- Product Table -->
+<div class="product-section">
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th class="column-name">Nombre</th>
+                <th class="column-quantity">Cantidad/unidad</th>
+                <th class="column-price">Precio</th>
+                <th class="column-expiry">Fecha vencimiento</th>
+                <th class="column-action"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="column-name">Acetaminofen</td>
+                <td class="column-quantity">20</td>
+                <td class="column-price">$5.000</td>
+                <td class="column-expiry">15/08/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr>
+                <td class="column-name">Paracetamol</td>
+                <td class="column-quantity">15</td>
+                <td class="column-price">$3.500</td>
+                <td class="column-expiry">23/06/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr>
+                <td class="column-name">Ibuprofeno</td>
+                <td class="column-quantity">35</td>
+                <td class="column-price">$7.800</td>
+                <td class="column-expiry">10/12/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr class="low-stock">
+                <td class="column-name">Pangetan</td>
+                <td class="column-quantity">4</td>
+                <td class="column-price">$12.500</td>
+                <td class="column-expiry">05/10/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr>
+                <td class="column-name">Lomotil</td>
+                <td class="column-quantity">17</td>
+                <td class="column-price">$8.200</td>
+                <td class="column-expiry">28/07/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr>
+                <td class="column-name">Pax Día</td>
+                <td class="column-quantity">23</td>
+                <td class="column-price">$9.500</td>
+                <td class="column-expiry">14/11/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr>
+                <td class="column-name">Pax Noche</td>
+                <td class="column-quantity">24</td>
+                <td class="column-price">$9.500</td>
+                <td class="column-expiry">14/11/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr class="low-stock">
+                <td class="column-name">Amoxicilina</td>
+                <td class="column-quantity">3</td>
+                <td class="column-price">$15.800</td>
+                <td class="column-expiry">02/09/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+            <tr class="low-stock">
+                <td class="column-name">Gripofen</td>
+                <td class="column-quantity">4</td>
+                <td class="column-price">$6.900</td>
+                <td class="column-expiry">18/10/2025</td>
+                <td class="column-action"><button class="update-btn"><i class="fa-solid fa-file-pen fa-2x"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
             
             <!-- Watermark -->
             <div class="watermark">
@@ -126,7 +145,6 @@
                             <input type="number" class="register-info" id="cantidad" required placeholder="Cantidad">
                             
                             <input type="number" class="register-info" id="precio" required placeholder="Valor de venta">
-                            
                             
                             <input type="date" class="register-info" id="fehcaVencimiento" required placeholder="Fecha de vencimiento">
 
@@ -153,7 +171,7 @@
                             
                             <input type="number" class="register-info" id="precio" required placeholder="Valor de venta">
 
-                            <input type="date" class="register-info" id="correo" required placeholder="Fecha de vencimiento">
+                            <input type="date" class="register-info" id="fechaVencimiento" required placeholder="Fecha de vencimiento">
 
                             <button type="submit" id="Btn-aceptar">Aceptar</button>
                         </div>
@@ -174,5 +192,21 @@
             
         </div>
     </div>
+
+    <script>
+        // Script para marcar productos con stock bajo
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.product-table tbody tr');
+            
+            rows.forEach(row => {
+                const quantityCell = row.querySelector('td:nth-child(2)');
+                const quantity = parseInt(quantityCell.textContent);
+                
+                if (quantity < 5) {
+                    row.classList.add('low-stock');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
