@@ -7,7 +7,7 @@ function checkLowStock() {
         if (!quantityCell) return;
         
         const quantity = parseInt(quantityCell.textContent);
-        if (quantity < 5) {
+        if (quantity <=5) {
             row.classList.add('low-stock');
         }
     });
