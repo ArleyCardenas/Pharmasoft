@@ -125,6 +125,13 @@ body {
 }
 
 /* Product Table */
+.product-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5; /* O el color de fondo que estés usando */
+    z-index: 1;
+}
+
 .product-section {
     position: relative;
     z-index: 1;
@@ -136,13 +143,6 @@ body {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-}
-
-.product-table thead th {
-    position: sticky;
-    top: 0;
-    background-color: #f5f5f5;
-    z-index: 1;
 }
 
 .product-table th {
@@ -165,24 +165,22 @@ body {
 }
 
 .column-name {
-    width: 30%;
+    width: 20%;
 }
 
 .column-quantity {
-    width: 15%;
-}
-
-.column-price {
-    width: 15%;
-}
-
-.column-expiry {
-    width: 30%;
+    width: 20%;
 }
 
 .column-action {
-    width: 10%;
+    width: 20%;
     text-align: center;
+}
+.column-price{
+    width: 20%;
+}
+.column-expiry {
+    width: 20%;
 }
 
 .update-btn {
@@ -197,7 +195,6 @@ body {
 .update-btn:hover {
     color: #ff6b00;
 }
-
 /* Estilos para productos con bajo stock */
 .low-stock td {
     position: relative;
@@ -214,7 +211,6 @@ body {
     width: 3px;
     background-color: #e74c3c;
 }
-
 /* Watermark */
 .watermark {
     position: absolute;
@@ -257,9 +253,11 @@ body {
     transform: scale(1.05);
 }
 
-/* Modal */
-.modal-products {
-    display: none;
+
+
+/*modal*/
+.modal-products{
+    display:none;
     position: fixed;
     z-index: 100;
     padding-top: 100px;
@@ -270,28 +268,24 @@ body {
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
-
-.modal-content {
+.modal-content{
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 35%;
 }
-
-.close {
+.close{
     color: #888;
     float: right;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
 }
-
-.close:hover {
+.close:hover{
     color: #333;
 }
-
-#Btn-aceptar {
+#Btn-aceptar{
     background-color: #ff6b00;
     color: white;
     border: none;
@@ -300,29 +294,26 @@ body {
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.2s;
-}
 
-#Btn-aceptar:hover {
+}
+#Btn-aceptar:hover{
     background-color: #e66000;
 }
-
-.register-newProduct {
+.register-newProduct{
     display: flex;
     flex-direction: column;
     gap: 15px;
+    
 }
-
-.register-info {
+.register-info{
     border-radius: 4px;
     border: 1px solid #888;
-    padding: 8px;
+    padding: 8px ;
+    
 }
-
-.register-info:focus {
+.register-info:focus{
     outline: none;
 }
-
-
 
 
 

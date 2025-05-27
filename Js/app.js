@@ -13,7 +13,6 @@ function checkLowStock() {
     });
 }
 
-// Función de configuración de modales (existente en el archivo original)
 function setupModal(modalId, openButtonId, closeButtonId) {
     const modal = document.getElementById(modalId);
     const openButton = document.getElementById(openButtonId);
@@ -42,16 +41,8 @@ function setupModal(modalId, openButtonId, closeButtonId) {
         }
     });
 }
-
-// Ejecutar cuando el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-    // Configurar modales (existente)
-    setupModal('modal-clients', 'add-button-clients', 'close-clients');
-    setupModal('modal-products', 'add-button-products', 'close-products-register');
-
-    // Verificar productos con stock bajo
-    checkLowStock();
-});
+setupModal('modal-clients', 'add-button-clients', 'close-clients');
+setupModal('modal-products', 'add-button-products', 'close-products-register');
 
 // Seleccionamos el modal y el botón de cerrar
 const updateModal = document.getElementById('modal-products-update');
@@ -61,29 +52,6 @@ const closeUpdateBtn = document.getElementById('close-products-update');
 document.querySelectorAll('.update-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         updateModal.style.display = 'block';
-        
-        // Obtener los datos de la fila para rellenar el formulario de actualización
-        const row = btn.closest('tr');
-        if (row) {
-            const nombre = row.cells[0].textContent;
-            const cantidad = row.cells[1].textContent;
-            const precio = row.cells[2].textContent.replace('$', '').trim();
-            const fecha = row.cells[3].textContent;
-            
-            // Poblar los campos del formulario
-            document.getElementById('producto').value = nombre;
-            document.getElementById('cantidad').value = cantidad;
-            document.getElementById('precio').value = precio.replace('.', '');
-            
-            // Intentar convertir la fecha del formato DD/MM/YYYY a YYYY-MM-DD para el input date
-            if (fecha) {
-                const partesFecha = fecha.split('/');
-                if (partesFecha.length === 3) {
-                    const fechaISO = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`;
-                    document.getElementById('fechaVencimiento').value = fechaISO;
-                }
-            }
-        }
     });
 });
 
@@ -124,11 +92,42 @@ if (updateClientModal && closeUpdateClientBtn) {
     });
 }
 
+
 // manejo de los productos en la tabla de ventas
 // Agregar producto a la factura
+    
+    const btnRestar=document.querySelectorAll('.btn-restar');//restar contador
+    btnRestar.forEach(boton=>{
+        boton.addEventListener('click', (event)=>{
+        const productCard = event.target.closest('.product-card');
+        const quantity= productCard.querySelector('.quantity');
+        let cantidadActual= parseInt(quantity.textContent);
+        if(cantidadActual>0){
+            cantidadActual--
+        }
+        quantity.textContent=cantidadActual
+
+        })
+    });
+
+    const btnAumentar= document.querySelectorAll(".btn-aumentar"); //aumentar contador
+    btnAumentar.forEach(boton=>{
+        boton.addEventListener('click', (event)=>{
+        
+        const productCard = event.target.closest('.product-card');
+        const quantity= productCard.querySelector('.quantity');
+        let cantidadActual= parseInt(quantity.textContent);
+        cantidadActual++
+        quantity.textContent=cantidadActual
+        })
+
+    });
+
+    
+            
+    
 document.querySelectorAll('.add-btn').forEach(button => {
     button.addEventListener('click', (event) => {
-        alert('Producto agregado a la factura!');
         const productCard = event.target.closest('.product-card');
         const productName = productCard.querySelector('.product-name').textContent;
         const productPrice = productCard.querySelector('.product-price').textContent;
@@ -137,14 +136,20 @@ document.querySelectorAll('.add-btn').forEach(button => {
         let products = JSON.parse(localStorage.getItem('facturaProducts')) || [];
 
         const existingProductIndex = products.findIndex(product => product.name === productName);
-        if (existingProductIndex !== -1) {
+        if(quantity>0){
+            if (existingProductIndex !== -1 ) {
             products[existingProductIndex].quantity += parseInt(quantity);
-        } else {
-            products.push({
-                name: productName,
-                price: parseFloat(productPrice.replace('$', '').replace('.', '')),
-                quantity: parseInt(quantity)
-            });
+            alert('producto agregado a la factura');
+            } else{
+                products.push({
+                    name: productName,
+                    price: parseFloat(productPrice.replace('$', '').replace('.', '')),
+                    quantity: parseInt(quantity)
+                })
+                alert('producto agregado a la factura')
+            }
+        }else{
+            alert('Ingrese la cantidad');
         }
 
         localStorage.setItem('facturaProducts', JSON.stringify(products));
@@ -155,9 +160,6 @@ document.querySelectorAll('.add-btn').forEach(button => {
 window.addEventListener('DOMContentLoaded', () => {
     const products = JSON.parse(localStorage.getItem('facturaProducts')) || [];
     const tableBody = document.querySelector('.invoice-table tbody');
-    
-    if (!tableBody) return; // Salir si no estamos en la página de factura
-    
     let totalAmount = 0;
 
     products.forEach(product => {
@@ -182,36 +184,33 @@ window.addEventListener('DOMContentLoaded', () => {
         totalAmount += totalPrice;
     });
 
-    const totalValueElement = document.querySelector('.total-value');
-    if (totalValueElement) {
-        totalValueElement.textContent = `$${totalAmount.toLocaleString()}`;
-    }
+    document.querySelector('.total-value').textContent = `$${totalAmount.toLocaleString()}`;
+    
 });
 
 // Delegación de eventos para eliminar producto
-const invoiceTable = document.querySelector('.invoice-table tbody');
-if (invoiceTable) {
-    invoiceTable.addEventListener('click', (event) => {
-        if (event.target.closest('.delete-btn')) {
-            const row = event.target.closest('tr');
-            const productName = row.querySelector('td:nth-child(2)').textContent;
+document.querySelector('.invoice-table tbody').addEventListener('click', (event) => {
+    if (event.target.closest('.delete-btn')) {
+        const row = event.target.closest('tr');
+        const productName = row.querySelector('td:nth-child(2)').textContent;
 
-            let products = JSON.parse(localStorage.getItem('facturaProducts')) || [];
-            products = products.filter(product => product.name !== productName);
-            localStorage.setItem('facturaProducts', JSON.stringify(products));
+        let products = JSON.parse(localStorage.getItem('facturaProducts')) || [];
+        products = products.filter(product => product.name !== productName);
+        localStorage.setItem('facturaProducts', JSON.stringify(products));
 
-            row.remove();
+        row.remove();
 
-            // Recalcular total
-            let totalAmount = 0;
-            products.forEach(product => {
-                totalAmount += product.quantity * product.price;
-            });
-            
-            const totalValueElement = document.querySelector('.total-value');
-            if (totalValueElement) {
-                totalValueElement.textContent = `$${totalAmount.toLocaleString()}`;
-            }
-        }
-    });
-}
+        // Recalcular total
+        let totalAmount = 0;
+        products.forEach(product => {
+            totalAmount += product.quantity * product.price;
+        });
+        document.querySelector('.total-value').textContent = `$${totalAmount.toLocaleString()}`;
+    }
+});
+
+
+
+
+
+
