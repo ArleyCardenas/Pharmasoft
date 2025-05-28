@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PharmaSoft - Factura</title>
-    <link rel="stylesheet" href="../styles/factura.css">
+    <link rel="stylesheet" href="styles/factura.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-    <script src="../Js/app.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -16,48 +15,50 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
                 alt="Foto de perfil" class="profile-img">
                 <div class="profile-info">
-                    <div class="profile-name">Santiago Benavides</div>
+                    <div class="profile-name" id="userName">Santiago Benavides</div>
                     <div class="profile-role">Empleado</div>
                 </div>
             </div>
             <div class="sidebar-menu">
                 <div class="menu-item"><a href="home.html">Home</a></div>
                 <div class="menu-item"><a href="clientes.html">Clientes</a></div>
-                <div class="menu-item"><a href="producto.html">Productos</a></div>
+                <div class="menu-item"><a href="productos.html">Productos</a></div>
                 <div class="menu-item active">Factura</div>
                 <div class="menu-item"><a href="caja.html">Cierre de caja</a></div>
+                <div class="menu-item logout-btn">Cerrar Sesión</div>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
             <h2 class="page-title">Factura</h2>
+            
             <!-- Customer Information -->
             <div class="customer-info">
                 <div class="info-row">
                     <input type="text" id="nameClient" name="nameClient" required placeholder="Nombre del cliente">
-                    <label for="client">Nombre Cliente</label>
+                    <label for="nameClient">Nombre Cliente</label>
                 </div>
                 
                 <div class="info-row">
                     <div class="info-group">
                         <input type="number" id="idClient" name="idClient" required placeholder="Identificacion del cliente">
-                        <label for="client">Identificacion</label>
+                        <label for="idClient">Identificacion</label>
                     </div>
                     <div class="info-group">
                         <input type="text" id="telefonoClient" name="telefonoClient" required placeholder="Telefono del cliente">
-                        <label for="client">Telefono Cliente</label>
+                        <label for="telefonoClient">Telefono Cliente</label>
                     </div>
                 </div>
                 
                 <div class="info-row">
                     <div class="info-group">
                         <input type="text" id="direccionClient" name="direccionClient" required placeholder="Direccion del cliente">
-                        <label for="client">Direccion Cliente</label>
+                        <label for="direccionClient">Direccion Cliente</label>
                     </div>
                     <div class="info-group">
                         <input type="email" id="emailClient" name="emailClient" required placeholder="Email del cliente">
-                        <label for="client">Email Cliente</label>
+                        <label for="emailClient">Email Cliente</label>
                     </div>
                 </div>
             </div>
@@ -74,22 +75,21 @@
                             <th class="column-action"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                       <!--productos agregados a la factura-->
-                        
+                    <tbody id="invoiceTableBody">
+                        <!-- Products will be loaded from cart -->
                     </tbody>
                 </table>
                 
                 <div class="total-section">
                     <div class="total-label">TOTAL A PAGAR:</div>
-                    <div class="total-value">270000</div>
+                    <div class="total-value" id="totalValue">$0</div>
                 </div>
             </div>
             
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="cancel-btn">Cancelar</button>
-                <button class="generate-btn">Generar Factura</button>
+                <button class="cancel-btn" id="cancelBtn">Cancelar</button>
+                <button class="generate-btn" id="generateBtn">Generar Factura</button>
                 <a href="home.html" class="button" id="add-button-products">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -98,7 +98,6 @@
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg>
                 </a>
-                
             </div>
             
             <!-- Watermark -->
@@ -107,5 +106,9 @@
             </div>
         </div>
     </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/factura.js"></script>
 </body>
 </html>

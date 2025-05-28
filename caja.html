@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSoft - Cierre de Caja</title>
+    <link rel="stylesheet" href="styles/caja.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name" id="userName">Santiago Benavides</div>
+                    <div class="profile-role">Empleado</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item"><a href="home.html">Home</a></div>
+                <div class="menu-item"><a href="clientes.html">Clientes</a></div>
+                <div class="menu-item"><a href="productos.html">Productos</a></div>
+                <div class="menu-item"><a href="factura.html">Factura</a></div>
+                <div class="menu-item active">Cierre de caja</div>
+                <div class="menu-item logout-btn">Cerrar Sesión</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="page-title">Cierre de Caja</h2>
+            
+            <!-- Cash Summary -->
+            <div class="cash-summary">
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Resumen del Día</h3>
+                        <span class="date" id="currentDate"></span>
+                    </div>
+                    
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Total Ventas</div>
+                            <div class="stat-value" id="totalSales">$0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Número de Facturas</div>
+                            <div class="stat-value" id="totalInvoices">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Productos Vendidos</div>
+                            <div class="stat-value" id="totalProducts">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Details -->
+            <div class="sales-details">
+                <h3>Detalle de Ventas</h3>
+                <div class="sales-table-container">
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Factura #</th>
+                                <th>Cliente</th>
+                                <th>Hora</th>
+                                <th>Total</th>
+                                <th>Empleado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTableBody">
+                            <!-- Sales will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Cash Count -->
+            <div class="cash-count">
+                <h3>Conteo de Efectivo</h3>
+                <div class="cash-form">
+                    <div class="denomination-grid">
+                        <div class="denomination-item">
+                            <label>Billetes de $100,000</label>
+                            <input type="number" id="bill100000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Billetes de $50,000</label>
+                            <input type="number" id="bill50000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Billetes de $20,000</label>
+                            <input type="number" id="bill20000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Billetes de $10,000</label>
+                            <input type="number" id="bill10000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Billetes de $5,000</label>
+                            <input type="number" id="bill5000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Billetes de $2,000</label>
+                            <input type="number" id="bill2000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Billetes de $1,000</label>
+                            <input type="number" id="bill1000" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                        <div class="denomination-item">
+                            <label>Monedas</label>
+                            <input type="number" id="coins" min="0" value="0">
+                            <span class="total">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cash-totals">
+                        <div class="total-row">
+                            <span>Total Efectivo Contado:</span>
+                            <span id="totalCounted">$0</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Total Ventas del Día:</span>
+                            <span id="totalSalesAmount">$0</span>
+                        </div>
+                        <div class="total-row difference">
+                            <span>Diferencia:</span>
+                            <span id="difference">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="print-btn" id="printReport">
+                    <i class="fas fa-print"></i>
+                    Imprimir Reporte
+                </button>
+                <button class="close-btn" id="closeCash">
+                    <i class="fas fa-lock"></i>
+                    Cerrar Caja
+                </button>
+            </div>
+            
+            <!-- Watermark -->
+            <div class="watermark">
+                <div class="watermark-content">PharmaSoft</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Close Cash Modal -->
+    <div class="modal" id="closeCashModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 class="modal-title">Confirmar Cierre de Caja</h2>
+            <div class="modal-body">
+                <p>¿Está seguro de que desea cerrar la caja?</p>
+                <p>Esta acción generará el reporte final del día.</p>
+                <div class="modal-summary">
+                    <div class="summary-item">
+                        <span>Total Ventas:</span>
+                        <span id="modalTotalSales">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Efectivo Contado:</span>
+                        <span id="modalTotalCounted">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Diferencia:</span>
+                        <span id="modalDifference">$0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancelClose">Cancelar</button>
+                <button class="confirm-btn" id="confirmClose">Confirmar Cierre</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/caja.js"></script>
+</body>
+</html>

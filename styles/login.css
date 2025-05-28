@@ -1,115 +1,128 @@
-.glass-container::before{
-    content:'' ;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    z-index: -1;
+.glass-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
-.login-box{
-    max-width: 250px;
-    margin: 0 auto;
-    text-align: center;
-
+.login-box {
+  max-width: 250px;
+  margin: 0 auto;
+  text-align: center;
 }
-h2{
-    color: #FF6600;
-    margin-top: 30px;
-    margin-bottom: -20px;
-    
+h2 {
+  color: #ff6600;
+  margin-top: 30px;
+  margin-bottom: -20px;
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'montserrat', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
-body{
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url(../images/logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgb(255, 255, 255);
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../images/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(255, 255, 255);
 }
-.glass-container{
-    width: 300px;
-    height: 350px;
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.904);
-    border-radius: 10px;
-    border: 2px solid #FF6b00;
+.glass-container {
+  width: 300px;
+  height: 350px;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.904);
+  border-radius: 10px;
+  border: 2px solid #ff6b00;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
-input{
-    padding: 10px;
-    margin-top: 25px;
-    border: none;
-    border-radius: 10px;
-    background: transparent;
-    border: 1px solid #FF6b00;
-    color: #333;
-    font-size: 13px;
+input {
+  padding: 10px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #ff6b00;
+  color: #333;
+  font-size: 13px;
 }
-input::placeholder{
-    color: #333;
-}
-
-input:focus{
-    outline: none;
-}
-.options{
-    display: flex;
-    align-items: start;
-    margin-top: 15px;
-    font-size: 12px;
-    color: rgb(0, 0, 0);
-    flex-direction: column;
-    
-}
-.options input{
-    margin-right: 5px;
-    margin-top: 0px;
-}
-.options a{
-    text-decoration: none;
-    color: blue;
-    margin-left: auto;
-}
-button{
-    background: #FF6b00;
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 15px;
-
-}
-button:hover{
-    background: #d45900 ;
-    color: rgb(255, 255, 255);
-    
+input::placeholder {
+  color: #333;
 }
 
-#contraseña{
-    color: blue;
-    text-decoration: none;
+input:focus {
+  outline: none;
 }
-#contraseña:hover{
-    color: blueviolet;
-    text-decoration: underline;
+.options {
+  display: flex;
+  align-items: start;
+  margin-top: 15px;
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  flex-direction: column;
+}
+.options input {
+  margin-right: 5px;
+  margin-top: 0px;
+}
+.options a {
+  text-decoration: none;
+  color: blue;
+  margin-left: auto;
+}
+button {
+  background: #ff6b00;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+button:hover {
+  background: #d45900;
+  color: rgb(255, 255, 255);
+}
+
+#contraseña {
+  color: blue;
+  text-decoration: none;
+}
+#contraseña:hover {
+  color: blueviolet;
+  text-decoration: underline;
+}
+
+.option-check {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.option-check input[type="radio"] {
+  margin: 0 5px 0 0;
+  width: auto;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
 }

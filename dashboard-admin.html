@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSoft - Dashboard Administrativo</title>
+    <link rel="stylesheet" href="styles/dashboard-admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name" id="userName">Admin PharmaSoft</div>
+                    <div class="profile-role">Administrador</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item active" data-section="dashboard">
+                    <i class="fas fa-chart-bar"></i> Dashboard
+                </div>
+                <div class="menu-item" data-section="empleados">
+                    <i class="fas fa-users-cog"></i> Empleados
+                </div>
+                <div class="menu-item" data-section="productos">
+                    <i class="fas fa-boxes"></i> Productos
+                </div>
+                <div class="menu-item" data-section="clientes">
+                    <i class="fas fa-users"></i> Clientes
+                </div>
+                <div class="menu-item" data-section="reportes">
+                    <i class="fas fa-file-alt"></i> Reportes
+                </div>
+                <div class="menu-item" data-section="configuracion">
+                    <i class="fas fa-cog"></i> Configuración
+                </div>
+                <div class="menu-item logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="content-section active">
+                <h2 class="page-title">Dashboard Administrativo</h2>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Ventas Totales</p>
+                                <p class="stat-value">$2,450,000</p>
+                            </div>
+                            <i class="fas fa-dollar-sign stat-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Productos</p>
+                                <p class="stat-value">1,234</p>
+                            </div>
+                            <i class="fas fa-boxes stat-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Clientes</p>
+                                <p class="stat-value">856</p>
+                            </div>
+                            <i class="fas fa-users stat-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card alert">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Stock Bajo</p>
+                                <p class="stat-value alert-value">23</p>
+                            </div>
+                            <i class="fas fa-exclamation-triangle stat-icon alert-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Ventas Mensuales</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3 class="chart-title">Distribución de Productos</h3>
+                        <canvas id="productsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empleados Section -->
+            <div id="empleados-section" class="content-section">
+                <h2 class="page-title">Gestión de Empleados</h2>
+                
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar empleado..." id="searchEmployees">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Rol</th>
+                                <th>Email</th>
+                                <th>Fecha Ingreso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeesTableBody">
+                            <tr>
+                                <td>Santiago Benavides</td>
+                                <td>empleado</td>
+                                <td>Empleado</td>
+                                <td>santiago@pharmasoft.com</td>
+                                <td>15/01/2024</td>
+                                <td>
+                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>María González</td>
+                                <td>maria</td>
+                                <td>Empleado</td>
+                                <td>maria@pharmasoft.com</td>
+                                <td>20/02/2024</td>
+                                <td>
+                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="add-button" id="addEmployeeBtn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <!-- Other sections placeholder -->
+            <div id="productos-section" class="content-section">
+                <h2 class="page-title">Gestión de Productos</h2>
+                <p>Módulo de productos en desarrollo...</p>
+            </div>
+
+            <div id="clientes-section" class="content-section">
+                <h2 class="page-title">Gestión de Clientes</h2>
+                <p>Módulo de clientes en desarrollo...</p>
+            </div>
+
+            <div id="reportes-section" class="content-section">
+                <h2 class="page-title">Reportes y Estadísticas</h2>
+                <p>Módulo de reportes en desarrollo...</p>
+            </div>
+
+            <div id="configuracion-section" class="content-section">
+                <h2 class="page-title">Configuración del Sistema</h2>
+                <p>Módulo de configuración en desarrollo...</p>
+            </div>
+
+            <!-- Watermark -->
+            <div class="watermark">
+                <div class="watermark-content">PharmaSoft</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Modal -->
+    <div class="modal" id="employeeModal">
+        <div class="modal-content">
+            <span class="close" id="closeEmployeeModal">&times;</span>
+            <h2 class="modal-title">Agregar Empleado</h2>
+            <form id="employeeForm">
+                <div class="form-group">
+                    <input type="text" id="employeeName" placeholder="Nombre completo" required>
+                    <input type="text" id="employeeUsername" placeholder="Nombre de usuario" required>
+                    <input type="email" id="employeeEmail" placeholder="Email" required>
+                    <input type="tel" id="employeePhone" placeholder="Teléfono" required>
+                    <select id="employeeRole" required>
+                        <option value="">Seleccionar rol</option>
+                        <option value="empleado">Empleado</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <input type="password" id="employeePassword" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="submit-btn">Agregar Empleado</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard-admin.js"></script>
+</body>
+</html>

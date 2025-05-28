@@ -1,46 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../styles/login.css">
+    <title>PharmaSoft - Login</title>
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 </head>
 <body>
     <div class="glass-container">
         <div class="login-box">
             <h2>Iniciar Sesión</h2>
-            <form action="#" method="post">
-
-                <input type="text" id="userName" name="userName"  required placeholder="Nombre de usuario">
-                
+            <form id="loginForm">
+                <input type="text" id="userName" name="userName" required placeholder="Nombre de usuario">
                 <input type="password" id="password" name="password" required placeholder="Contraseña">
                 
-            
-
                 <div class="options">
                     <a href="#" id="contraseña">¿olvidaste tu contraseña?</a>
                     <div class="option-check">
-                        <input type="radio" id="admin" name="opcion">
+                        <input type="radio" id="admin" name="opcion" value="admin">
                         <label for="admin">Administrador</label>
-
                     </div>
                     <div class="option-check">
-                        <input type="radio" id="empleado" name="opcion" >
-                    <label for="empleado">Empleado</label>
+                        <input type="radio" id="empleado" name="opcion" value="empleado" checked>
+                        <label for="empleado">Empleado</label>
                     </div>
-                    
-                    
                 </div>
                 
-                <button type="submit">Iniciar Sesion</button>
-                
-
-
+                <button type="submit">Iniciar Sesión</button>
             </form>
-
         </div>
     </div>
     
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
