@@ -58,7 +58,7 @@
                         <div class="stat-content">
                             <div class="stat-info">
                                 <p class="stat-label">Ventas Totales</p>
-                                <p class="stat-value">$2,450,000</p>
+                                <p class="stat-value" id="totalSales">$0</p>
                             </div>
                             <i class="fas fa-dollar-sign stat-icon"></i>
                         </div>
@@ -68,7 +68,7 @@
                         <div class="stat-content">
                             <div class="stat-info">
                                 <p class="stat-label">Productos</p>
-                                <p class="stat-value">1,234</p>
+                                <p class="stat-value" id="totalProducts">0</p>
                             </div>
                             <i class="fas fa-boxes stat-icon"></i>
                         </div>
@@ -78,7 +78,7 @@
                         <div class="stat-content">
                             <div class="stat-info">
                                 <p class="stat-label">Clientes</p>
-                                <p class="stat-value">856</p>
+                                <p class="stat-value" id="totalClients">0</p>
                             </div>
                             <i class="fas fa-users stat-icon"></i>
                         </div>
@@ -88,7 +88,7 @@
                         <div class="stat-content">
                             <div class="stat-info">
                                 <p class="stat-label">Stock Bajo</p>
-                                <p class="stat-value alert-value">23</p>
+                                <p class="stat-value alert-value" id="lowStockCount">0</p>
                             </div>
                             <i class="fas fa-exclamation-triangle stat-icon alert-icon"></i>
                         </div>
@@ -107,19 +107,33 @@
                         <canvas id="productsChart"></canvas>
                     </div>
                 </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h3>Actividad Reciente del Sistema</h3>
+                    <div class="activity-list" id="systemActivityList">
+                        <!-- Activities will be loaded here -->
+                    </div>
+                </div>
             </div>
 
             <!-- Empleados Section -->
             <div id="empleados-section" class="content-section">
                 <h2 class="page-title">Gestión de Empleados</h2>
                 
-                <div class="search-container">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Buscar empleado..." id="searchEmployees">
-                        <button class="search-button">
-                            <i class="fas fa-search"></i>
-                        </button>
+                <div class="section-header">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar empleado..." id="searchEmployees">
+                            <button class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
+                    <button class="add-button" id="addEmployeeBtn">
+                        <i class="fas fa-plus"></i>
+                        Agregar Empleado
+                    </button>
                 </div>
 
                 <div class="table-section">
@@ -130,63 +144,288 @@
                                 <th>Usuario</th>
                                 <th>Rol</th>
                                 <th>Email</th>
+                                <th>Teléfono</th>
                                 <th>Fecha Ingreso</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="employeesTableBody">
-                            <tr>
-                                <td>Santiago Benavides</td>
-                                <td>empleado</td>
-                                <td>Empleado</td>
-                                <td>santiago@pharmasoft.com</td>
-                                <td>15/01/2024</td>
-                                <td>
-                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>María González</td>
-                                <td>maria</td>
-                                <td>Empleado</td>
-                                <td>maria@pharmasoft.com</td>
-                                <td>20/02/2024</td>
-                                <td>
-                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <!-- Employees will be loaded here -->
                         </tbody>
                     </table>
                 </div>
-
-                <button class="add-button" id="addEmployeeBtn">
-                    <i class="fas fa-plus"></i>
-                </button>
             </div>
 
-            <!-- Other sections placeholder -->
+            <!-- Productos Section -->
             <div id="productos-section" class="content-section">
                 <h2 class="page-title">Gestión de Productos</h2>
-                <p>Módulo de productos en desarrollo...</p>
+                
+                <div class="section-header">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar producto..." id="searchProductsAdmin">
+                            <button class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="add-button" id="addProductBtn">
+                        <i class="fas fa-plus"></i>
+                        Agregar Producto
+                    </button>
+                </div>
+
+                <div class="table-section">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Vencimiento</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsAdminTableBody">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
+            <!-- Clientes Section -->
             <div id="clientes-section" class="content-section">
                 <h2 class="page-title">Gestión de Clientes</h2>
-                <p>Módulo de clientes en desarrollo...</p>
+                
+                <div class="section-header">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar cliente..." id="searchClientsAdmin">
+                            <button class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="add-button" id="addClientBtn">
+                        <i class="fas fa-plus"></i>
+                        Agregar Cliente
+                    </button>
+                </div>
+
+                <div class="table-section">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Identificación</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Dirección</th>
+                                <th>Facturas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsAdminTableBody">
+                            <!-- Clients will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
+            <!-- Reportes Section -->
             <div id="reportes-section" class="content-section">
                 <h2 class="page-title">Reportes y Estadísticas</h2>
-                <p>Módulo de reportes en desarrollo...</p>
+                
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3><i class="fas fa-chart-line"></i> Reporte de Ventas</h3>
+                        </div>
+                        <div class="report-content">
+                            <p>Generar reporte detallado de ventas por período</p>
+                            <div class="date-range">
+                                <input type="date" id="salesFromDate">
+                                <span>hasta</span>
+                                <input type="date" id="salesToDate">
+                            </div>
+                            <button class="report-btn" onclick="generateSalesReport()">
+                                <i class="fas fa-download"></i> Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3><i class="fas fa-boxes"></i> Reporte de Inventario</h3>
+                        </div>
+                        <div class="report-content">
+                            <p>Estado actual del inventario y productos con stock bajo</p>
+                            <button class="report-btn" onclick="generateInventoryReport()">
+                                <i class="fas fa-download"></i> Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3><i class="fas fa-users"></i> Reporte de Clientes</h3>
+                        </div>
+                        <div class="report-content">
+                            <p>Listado completo de clientes y su historial de compras</p>
+                            <button class="report-btn" onclick="generateClientsReport()">
+                                <i class="fas fa-download"></i> Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3><i class="fas fa-cash-register"></i> Reporte de Cierres de Caja</h3>
+                        </div>
+                        <div class="report-content">
+                            <p>Historial de cierres de caja y diferencias</p>
+                            <div class="date-range">
+                                <input type="date" id="cashFromDate">
+                                <span>hasta</span>
+                                <input type="date" id="cashToDate">
+                            </div>
+                            <button class="report-btn" onclick="generateCashReport()">
+                                <i class="fas fa-download"></i> Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <h3>Estadísticas Rápidas</h3>
+                    <div class="stats-row">
+                        <div class="quick-stat">
+                            <span class="stat-number" id="todayInvoices">0</span>
+                            <span class="stat-text">Facturas Hoy</span>
+                        </div>
+                        <div class="quick-stat">
+                            <span class="stat-number" id="monthlyRevenue">$0</span>
+                            <span class="stat-text">Ingresos del Mes</span>
+                        </div>
+                        <div class="quick-stat">
+                            <span class="stat-number" id="topProduct">-</span>
+                            <span class="stat-text">Producto Más Vendido</span>
+                        </div>
+                        <div class="quick-stat">
+                            <span class="stat-number" id="avgTicket">$0</span>
+                            <span class="stat-text">Ticket Promedio</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Configuración Section -->
             <div id="configuracion-section" class="content-section">
                 <h2 class="page-title">Configuración del Sistema</h2>
-                <p>Módulo de configuración en desarrollo...</p>
-            </div>
+                
+                <div class="config-grid">
+                    <div class="config-card">
+                        <div class="config-header">
+                            <h3><i class="fas fa-store"></i> Información de la Farmacia</h3>
+                        </div>
+                        <div class="config-content">
+                            <form id="pharmacyInfoForm">
+                                <div class="form-group">
+                                    <label>Nombre de la Farmacia</label>
+                                    <input type="text" id="pharmacyName" value="PharmaSoft">
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección</label>
+                                    <input type="text" id="pharmacyAddress" placeholder="Dirección de la farmacia">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input type="tel" id="pharmacyPhone" placeholder="Teléfono de contacto">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="pharmacyEmail" placeholder="Email de contacto">
+                                </div>
+                                <button type="submit" class="config-btn">
+                                    <i class="fas fa-save"></i> Guardar Información
+                                </button>
+                            </form>
+                        </div>
+                    </div>
 
+                    <div class="config-card">
+                        <div class="config-header">
+                            <h3><i class="fas fa-cog"></i> Configuración General</h3>
+                        </div>
+                        <div class="config-content">
+                            <form id="generalConfigForm">
+                                <div class="form-group">
+                                    <label>Stock Mínimo de Alerta</label>
+                                    <input type="number" id="minStockAlert" value="5" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Días de Alerta de Vencimiento</label>
+                                    <input type="number" id="expiryAlertDays" value="30" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Moneda</label>
+                                    <select id="currency">
+                                        <option value="COP">Peso Colombiano (COP)</option>
+                                        <option value="USD">Dólar (USD)</option>
+                                        <option value="EUR">Euro (EUR)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="config-btn">
+                                    <i class="fas fa-save"></i> Guardar Configuración
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="config-card">
+                        <div class="config-header">
+                            <h3><i class="fas fa-database"></i> Gestión de Datos</h3>
+                        </div>
+                        <div class="config-content">
+                            <div class="data-actions">
+                                <button class="config-btn backup-btn" onclick="exportData()">
+                                    <i class="fas fa-download"></i> Exportar Datos
+                                </button>
+                                <button class="config-btn restore-btn" onclick="document.getElementById('importFile').click()">
+                                    <i class="fas fa-upload"></i> Importar Datos
+                                </button>
+                                <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+                                <button class="config-btn danger-btn" onclick="clearAllData()">
+                                    <i class="fas fa-trash"></i> Limpiar Todos los Datos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-card">
+                        <div class="config-header">
+                            <h3><i class="fas fa-shield-alt"></i> Seguridad</h3>
+                        </div>
+                        <div class="config-content">
+                            <form id="securityForm">
+                                <div class="form-group">
+                                    <label>Cambiar Contraseña de Administrador</label>
+                                    <input type="password" id="currentPassword" placeholder="Contraseña actual">
+                                    <input type="password" id="newPassword" placeholder="Nueva contraseña">
+                                    <input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
+                                </div>
+                                <button type="submit" class="config-btn">
+                                    <i class="fas fa-key"></i> Cambiar Contraseña
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Watermark -->
             <div class="watermark">
                 <div class="watermark-content">PharmaSoft</div>
@@ -198,13 +437,14 @@
     <div class="modal" id="employeeModal">
         <div class="modal-content">
             <span class="close" id="closeEmployeeModal">&times;</span>
-            <h2 class="modal-title">Agregar Empleado</h2>
+            <h2 class="modal-title" id="employeeModalTitle">Agregar Empleado</h2>
             <form id="employeeForm">
                 <div class="form-group">
+                    <input type="hidden" id="employeeEditId">
                     <input type="text" id="employeeName" placeholder="Nombre completo" required>
                     <input type="text" id="employeeUsername" placeholder="Nombre de usuario" required>
                     <input type="email" id="employeeEmail" placeholder="Email" required>
-                    <input type="tel" id="employeePhone" placeholder="Teléfono" required>
+                    <input type="tel" id="employeePhone" placeholder="Teléfono">
                     <select id="employeeRole" required>
                         <option value="">Seleccionar rol</option>
                         <option value="empleado">Empleado</option>
@@ -212,12 +452,58 @@
                     </select>
                     <input type="password" id="employeePassword" placeholder="Contraseña" required>
                 </div>
-                <button type="submit" class="submit-btn">Agregar Empleado</button>
+                <button type="submit" class="submit-btn" id="employeeSubmitBtn">Agregar Empleado</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close" id="closeProductModal">&times;</span>
+            <h2 class="modal-title" id="productModalTitle">Agregar Producto</h2>
+            <form id="productAdminForm">
+                <div class="form-group">
+                    <input type="hidden" id="productEditId">
+                    <input type="text" id="productAdminName" placeholder="Nombre del producto" required>
+                    <select id="productAdminCategory" required>
+                        <option value="">Seleccionar categoría</option>
+                        <option value="Tabletas">Tabletas</option>
+                        <option value="Jarabes">Jarabes</option>
+                        <option value="Inyectables">Inyectables</option>
+                        <option value="Cremas">Cremas</option>
+                    </select>
+                    <input type="number" id="productAdminPrice" placeholder="Precio" min="0" required>
+                    <input type="number" id="productAdminStock" placeholder="Stock inicial" min="0" required>
+                    <input type="date" id="productAdminExpiry" required>
+                </div>
+                <button type="submit" class="submit-btn" id="productSubmitBtn">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Client Modal -->
+    <div class="modal" id="clientModal">
+        <div class="modal-content">
+            <span class="close" id="closeClientModal">&times;</span>
+            <h2 class="modal-title" id="clientModalTitle">Agregar Cliente</h2>
+            <form id="clientAdminForm">
+                <div class="form-group">
+                    <input type="hidden" id="clientEditId">
+                    <input type="text" id="clientAdminName" placeholder="Nombre completo" required>
+                    <input type="text" id="clientAdminId" placeholder="Número de identificación" required>
+                    <input type="tel" id="clientAdminPhone" placeholder="Teléfono" required>
+                    <input type="email" id="clientAdminEmail" placeholder="Email" required>
+                    <input type="text" id="clientAdminAddress" placeholder="Dirección" required>
+                </div>
+                <button type="submit" class="submit-btn" id="clientSubmitBtn">Agregar Cliente</button>
             </form>
         </div>
     </div>
 
     <script src="js/auth.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/dashboard-admin.js"></script>
 </body>
 </html>

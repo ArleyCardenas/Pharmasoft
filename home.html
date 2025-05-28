@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmaSoft - Sistema de Farmacia</title>
+    <title>PharmaSoft - Productos</title>
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -20,26 +21,26 @@
                 </div>
             </div>
             <div class="sidebar-menu">
-                <div class="menu-item active">Home</div>
-                <div class="menu-item"><a href="clientes.html">Clientes</a></div>
-                <div class="menu-item"><a href="productos.html">Productos</a></div>
-                <div class="menu-item"><a href="factura.html">Factura</a></div>
-                <div class="menu-item"><a href="caja.html">Cierre de caja</a></div>
-                <div class="menu-item logout-btn">Cerrar Sesión</div>
+                <div class="menu-item"><a href="dashboard-empleado.html"><i class="fas fa-chart-bar"></i> Dashboard</a></div>
+                <div class="menu-item active"><i class="fas fa-home"></i> Vender</div>
+                <div class="menu-item"><a href="stock.html"><i class="fas fa-boxes"></i> Productos</a></div>
+                <div class="menu-item"><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></div>
+                <div class="menu-item"><a href="factura.html"><i class="fas fa-file-invoice"></i> Factura</a></div>
+                <div class="menu-item"><a href="caja.html"><i class="fas fa-cash-register"></i> Cierre de caja</a></div>
+                <div class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</div>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
+            <h2 class="page-title">Productos</h2>
+            
             <!-- Search Bar -->
             <div class="search-container">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search" id="searchInput">
+                    <input type="text" placeholder="Buscar productos..." id="searchInput">
                     <button class="search-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
@@ -51,6 +52,17 @@
                 <div class="category" data-category="Jarabes">Jarabes</div>
                 <div class="category" data-category="Inyectables">Inyectables</div>
                 <div class="category" data-category="Cremas">Cremas</div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary" id="cartSummary">
+                <div class="cart-info">
+                    <span class="cart-items">Productos en carrito: <strong id="cartCount">0</strong></span>
+                    <span class="cart-total">Total: <strong id="cartTotal">$0</strong></span>
+                </div>
+                <a href="factura.html" class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i> Ver Carrito
+                </a>
             </div>
 
             <!-- Products-->

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSoft - Gestión de Stock</title>
+    <link rel="stylesheet" href="styles/stock.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name" id="userName">Santiago Benavides</div>
+                    <div class="profile-role">Empleado</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item"><a href="dashboard-empleado.html"><i class="fas fa-chart-bar"></i> Dashboard</a></div>
+                <div class="menu-item"><a href="home.html"><i class="fas fa-home"></i> Vender</a></div>
+                <div class="menu-item active"><i class="fas fa-boxes"></i> Productos</div>
+                <div class="menu-item"><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></div>
+                <div class="menu-item"><a href="factura.html"><i class="fas fa-file-invoice"></i> Factura</a></div>
+                <div class="menu-item"><a href="caja.html"><i class="fas fa-cash-register"></i> Cierre de caja</a></div>
+                <div class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="page-title">Productos</h2>
+            
+            <!-- Stock Summary Cards -->
+            <div class="stock-summary">
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-value" id="totalProducts">0</div>
+                        <div class="card-label">Total Productos</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card alert">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-value" id="lowStockProducts">0</div>
+                        <div class="card-label">Stock Bajo</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card warning">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-value" id="expiringProducts">0</div>
+                        <div class="card-label">Por Vencer</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card success">
+                    <div class="card-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-value" id="totalValue">$0</div>
+                        <div class="card-label">Valor Total</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search and Add Section -->
+            <div class="section-header">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar producto..." id="searchStock">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="add-button" id="addStockBtn">
+                    <i class="fas fa-plus"></i>
+                    Agregar Producto
+                </button>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <div class="tab active" data-filter="all">Todos</div>
+                <div class="tab" data-filter="low-stock">Stock Bajo</div>
+                <div class="tab" data-filter="expiring">Por Vencer</div>
+                <div class="tab" data-filter="expired">Vencidos</div>
+            </div>
+            
+            <!-- Stock Table -->
+            <div class="stock-section">
+                <table class="stock-table">
+                    <thead>
+                        <tr>
+                            <th class="column-name">Producto</th>
+                            <th class="column-category">Categoría</th>
+                            <th class="column-stock">Stock</th>
+                            <th class="column-price">Precio</th>
+                            <th class="column-expiry">Vencimiento</th>
+                            <th class="column-status">Estado</th>
+                            <th class="column-actions">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockTableBody">
+                        <!-- Products will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Watermark -->
+            <div class="watermark">
+                <div class="watermark-content">PharmaSoft</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="stockModal">
+        <div class="modal-content">
+            <span class="close" id="closeStockModal">&times;</span>
+            <h2 class="modal-title" id="stockModalTitle">Agregar Producto</h2>
+            <form id="stockForm">
+                <div class="form-group">
+                    <input type="hidden" id="stockEditId">
+                    <input type="text" class="form-input" id="stockName" required placeholder="Nombre del producto">
+                    <select class="form-input" id="stockCategory" required>
+                        <option value="">Seleccionar categoría</option>
+                        <option value="Tabletas">Tabletas</option>
+                        <option value="Jarabes">Jarabes</option>
+                        <option value="Inyectables">Inyectables</option>
+                        <option value="Cremas">Cremas</option>
+                    </select>
+                    <input type="number" class="form-input" id="stockPrice" required placeholder="Precio" min="0" step="0.01">
+                    <input type="number" class="form-input" id="stockQuantity" required placeholder="Cantidad inicial" min="0">
+                    <input type="date" class="form-input" id="stockExpiry" required>
+                    <textarea class="form-input" id="stockDescription" placeholder="Descripción (opcional)" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="stockSubmitBtn">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Stock Modal -->
+    <div class="modal" id="updateStockModal">
+        <div class="modal-content">
+            <span class="close" id="closeUpdateStockModal">&times;</span>
+            <h2 class="modal-title">Actualizar Stock</h2>
+            <form id="updateStockForm">
+                <div class="form-group">
+                    <input type="hidden" id="updateStockProductId">
+                    <div class="product-info">
+                        <h3 id="updateProductName">Producto</h3>
+                        <p>Stock actual: <span id="currentStock">0</span></p>
+                    </div>
+                    <div class="stock-update-options">
+                        <label>
+                            <input type="radio" name="updateType" value="add" checked>
+                            Agregar al stock
+                        </label>
+                        <label>
+                            <input type="radio" name="updateType" value="set">
+                            Establecer stock
+                        </label>
+                        <label>
+                            <input type="radio" name="updateType" value="subtract">
+                            Reducir stock
+                        </label>
+                    </div>
+                    <input type="number" class="form-input" id="stockUpdateQuantity" required placeholder="Cantidad" min="0">
+                    <textarea class="form-input" id="stockUpdateReason" placeholder="Motivo del cambio" rows="2"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Actualizar Stock</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/stock.js"></script>
+</body>
+</html>

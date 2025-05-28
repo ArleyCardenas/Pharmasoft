@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput")
   const categoriesContainer = document.querySelector(".categories")
   const productsGrid = document.getElementById("productsGrid")
+  const cartCount = document.getElementById("cartCount")
+  const cartTotal = document.getElementById("cartTotal")
 
   let currentCategory = "Reciente"
   let searchTerm = ""
 
   // Initialize page
   loadProducts()
+  updateCartSummary()
   setupEventListeners()
 
   function setupEventListeners() {
@@ -34,6 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loadProducts()
       }
     })
+
+    // Update cart summary when cart changes
+    window.addEventListener("storage", updateCartSummary)
   }
 
   function loadProducts() {
@@ -55,6 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderProducts(products) {
     productsGrid.innerHTML = ""
 
+    if (products.length === 0) {
+      productsGrid.innerHTML =
+        '<p style="text-align: center; color: #666; grid-column: 1/-1;">No se encontraron productos</p>'
+      return
+    }
+
     products.forEach((product) => {
       const productCard = createProductCard(product)
       productsGrid.appendChild(productCard)
@@ -71,23 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     card.innerHTML = `
-            <div class="availability">Disponibles: ${product.stock}</div>
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}" class="med-image">
-            </div>
-            <div class="product-info">
-                <div class="product-name">${product.name}</div>
-                <div class="product-price">$${product.price.toLocaleString()}</div>
-                <div class="product-actions">
-                    <div class="quantity-selector">
-                        <button class="btn-restar" data-product-id="${product.id}">&#60;</button>
-                        <span class="quantity">0</span>
-                        <button class="btn-aumentar" data-product-id="${product.id}">&#62;</button>
-                    </div>
-                    <button class="add-btn" data-product-id="${product.id}">Añadir</button>
-                </div>
-            </div>
-        `
+      <div class="availability">Disponibles: ${product.stock}</div>
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}" class="med-image">
+      </div>
+      <div class="product-info">
+        <div class="product-name">${product.name}</div>
+        <div class="product-price">$${product.price.toLocaleString()}</div>
+        <div class="product-actions">
+          <div class="quantity-selector">
+            <button class="btn-restar" data-product-id="${product.id}">-</button>
+            <span class="quantity">0</span>
+            <button class="btn-aumentar" data-product-id="${product.id}">+</button>
+          </div>
+          <button class="add-btn" data-product-id="${product.id}">Añadir</button>
+        </div>
+      </div>
+    `
 
     // Add event listeners for quantity controls
     const decreaseBtn = card.querySelector(".btn-restar")
@@ -105,21 +117,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     increaseBtn.addEventListener("click", () => {
       let quantity = Number.parseInt(quantitySpan.textContent)
-      quantity++
-      quantitySpan.textContent = quantity
+      if (quantity < product.stock) {
+        quantity++
+        quantitySpan.textContent = quantity
+      } else {
+        alert(`Stock máximo disponible: ${product.stock}`)
+      }
     })
 
     addBtn.addEventListener("click", () => {
       const quantity = Number.parseInt(quantitySpan.textContent)
       if (quantity > 0) {
-        window.cart.addItem(product, quantity)
-        quantitySpan.textContent = "0"
-        alert("Producto agregado a la factura")
+        if (quantity <= product.stock) {
+          window.cart.addItem(product, quantity)
+          quantitySpan.textContent = "0"
+          updateCartSummary()
+
+          // Log activity
+          if (window.logActivity) {
+            window.logActivity("product", `${quantity} ${product.name} agregado al carrito`)
+          }
+
+          alert("Producto agregado al carrito")
+        } else {
+          alert(`Stock insuficiente. Disponible: ${product.stock}`)
+        }
       } else {
-        alert("Ingrese la cantidad")
+        alert("Seleccione la cantidad")
       }
     })
 
     return card
+  }
+
+  function updateCartSummary() {
+    const itemCount = window.cart.getItemCount()
+    const total = window.cart.getTotal()
+
+    cartCount.textContent = itemCount
+    cartTotal.textContent = `$${total.toLocaleString()}`
   }
 })

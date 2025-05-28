@@ -33,6 +33,12 @@ class AuthSystem {
       this.currentUser = user
       localStorage.setItem("pharmasoft_user", JSON.stringify(user))
       console.log("Login successful, user stored:", this.currentUser)
+
+      // Log activity
+      if (window.logActivity) {
+        window.logActivity("login", `${user.name} inició sesión`)
+      }
+
       return true
     }
     console.log("Login failed")
@@ -40,6 +46,10 @@ class AuthSystem {
   }
 
   logout() {
+    if (this.currentUser && window.logActivity) {
+      window.logActivity("login", `${this.currentUser.name} cerró sesión`)
+    }
+
     this.currentUser = null
     localStorage.removeItem("pharmasoft_user")
     localStorage.removeItem("pharmasoft_cart")
@@ -76,6 +86,37 @@ class AuthSystem {
       return false
     }
     return true
+  }
+
+  addUser(userData) {
+    const newUser = {
+      id: Math.max(...this.users.map((u) => u.id), 0) + 1,
+      ...userData,
+    }
+    this.users.push(newUser)
+    return newUser
+  }
+
+  updateUser(id, updates) {
+    const userIndex = this.users.findIndex((u) => u.id === id)
+    if (userIndex !== -1) {
+      this.users[userIndex] = { ...this.users[userIndex], ...updates }
+      return this.users[userIndex]
+    }
+    return null
+  }
+
+  deleteUser(id) {
+    const userIndex = this.users.findIndex((u) => u.id === id)
+    if (userIndex !== -1) {
+      this.users.splice(userIndex, 1)
+      return true
+    }
+    return false
+  }
+
+  getAllUsers() {
+    return this.users.filter((u) => u.id !== this.currentUser?.id)
   }
 }
 

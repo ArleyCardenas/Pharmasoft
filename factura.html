@@ -6,6 +6,7 @@
     <title>PharmaSoft - Factura</title>
     <link rel="stylesheet" href="styles/factura.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -20,18 +21,19 @@
                 </div>
             </div>
             <div class="sidebar-menu">
-                <div class="menu-item"><a href="home.html">Home</a></div>
-                <div class="menu-item"><a href="clientes.html">Clientes</a></div>
-                <div class="menu-item"><a href="productos.html">Productos</a></div>
-                <div class="menu-item active">Factura</div>
-                <div class="menu-item"><a href="caja.html">Cierre de caja</a></div>
-                <div class="menu-item logout-btn">Cerrar Sesión</div>
+                <div class="menu-item"><a href="dashboard-empleado.html"><i class="fas fa-chart-bar"></i> Dashboard</a></div>
+                <div class="menu-item"><a href="home.html"><i class="fas fa-home"></i> Vender</a></div>
+                <div class="menu-item"><a href="stock.html"><i class="fas fa-boxes"></i> Productos</a></div>
+                <div class="menu-item"><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></div>
+                <div class="menu-item active"><i class="fas fa-file-invoice"></i> Factura</div>
+                <div class="menu-item"><a href="caja.html"><i class="fas fa-cash-register"></i> Cierre de caja</a></div>
+                <div class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</div>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
-            <h2 class="page-title">Factura</h2>
+            <h2 class="page-title">Generar Factura</h2>
             
             <!-- Customer Information -->
             <div class="customer-info">
@@ -88,15 +90,14 @@
             
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="cancel-btn" id="cancelBtn">Cancelar</button>
-                <button class="generate-btn" id="generateBtn">Generar Factura</button>
-                <a href="home.html" class="button" id="add-button-products">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
+                <button class="cancel-btn" id="cancelBtn">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button class="generate-btn" id="generateBtn">
+                    <i class="fas fa-file-invoice"></i> Generar Factura
+                </button>
+                <a href="home.html" class="add-products-btn">
+                    <i class="fas fa-plus"></i> Agregar Productos
                 </a>
             </div>
             
@@ -109,6 +110,7 @@
 
     <script src="js/auth.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/products-data.js"></script>
     <script src="js/factura.js"></script>
 </body>
 </html>

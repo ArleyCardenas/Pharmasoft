@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSoft - Dashboard Empleado</title>
+    <link rel="stylesheet" href="styles/dashboard-empleado.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                alt="Foto de perfil" class="profile-img">
+                <div class="profile-info">
+                    <div class="profile-name" id="userName">Santiago Benavides</div>
+                    <div class="profile-role">Empleado</div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item active"><a href="dashboard-empleado.html"><i class="fas fa-chart-bar"></i> Dashboard</a></div>
+                <div class="menu-item"><a href="home.html"><i class="fas fa-home"></i> Vender</a></div>
+                <div class="menu-item"><a href="stock.html"><i class="fas fa-boxes"></i> Productos</a></div>
+                <div class="menu-item"><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></div>
+                <div class="menu-item"><a href="factura.html"><i class="fas fa-file-invoice"></i> Factura</a></div>
+                <div class="menu-item"><a href="caja.html"><i class="fas fa-cash-register"></i> Cierre de caja</a></div>
+                <div class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="page-title">Dashboard - Empleado</h2>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Ventas del Día</p>
+                            <p class="stat-value" id="dailySales">$0</p>
+                        </div>
+                        <i class="fas fa-dollar-sign stat-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Facturas Generadas</p>
+                            <p class="stat-value" id="dailyInvoices">0</p>
+                        </div>
+                        <i class="fas fa-file-invoice stat-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Productos en Carrito</p>
+                            <p class="stat-value" id="cartItems">0</p>
+                        </div>
+                        <i class="fas fa-shopping-cart stat-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="stat-card alert">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Stock Bajo</p>
+                            <p class="stat-value alert-value" id="lowStock">0</p>
+                        </div>
+                        <i class="fas fa-exclamation-triangle stat-icon alert-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-section">
+                <h3>Actividad Reciente</h3>
+                <div class="activity-list" id="activityList">
+                    <!-- Activities will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Acciones Rápidas</h3>
+                <div class="actions-grid">
+                    <a href="home.html" class="action-card">
+                        <i class="fas fa-plus"></i>
+                        <span>Agregar Productos</span>
+                    </a>
+                    <a href="factura.html" class="action-card">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Nueva Factura</span>
+                    </a>
+                    <a href="clientes.html" class="action-card">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Nuevo Cliente</span>
+                    </a>
+                    <a href="caja.html" class="action-card">
+                        <i class="fas fa-cash-register"></i>
+                        <span>Cerrar Caja</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Watermark -->
+            <div class="watermark">
+                <div class="watermark-content">PharmaSoft</div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/dashboard-empleado.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (user.role === "admin") {
         window.location.href = "dashboard-admin.html"
       } else {
-        window.location.href = "home.html"
+        window.location.href = "dashboard-empleado.html"
       }
       return
     }
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (role === "admin") {
           window.location.href = "dashboard-admin.html"
         } else {
-          window.location.href = "home.html"
+          window.location.href = "dashboard-empleado.html"
         }
       } else {
         console.log("Login failed")
