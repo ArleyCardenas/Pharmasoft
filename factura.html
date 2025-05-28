@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="profile">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
-                alt="Foto de perfil" class="profile-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Foto de perfil"
+                    class="profile-img">
                 <div class="profile-info">
                     <div class="profile-name" id="userName">Santiago Benavides</div>
                     <div class="profile-role">Empleado</div>
                 </div>
             </div>
             <div class="sidebar-menu">
-                <div class="menu-item"><a href="dashboard-empleado.html"><i class="fas fa-chart-bar"></i> Dashboard</a></div>
+                <div class="menu-item"><a href="dashboard-empleado.html"><i class="fas fa-chart-bar"></i> Dashboard</a>
+                </div>
                 <div class="menu-item"><a href="home.html"><i class="fas fa-home"></i> Vender</a></div>
                 <div class="menu-item"><a href="stock.html"><i class="fas fa-boxes"></i> Productos</a></div>
                 <div class="menu-item"><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></div>
@@ -34,60 +37,67 @@
         <!-- Main Content -->
         <div class="main-content">
             <h2 class="page-title">Generar Factura</h2>
-            
+
             <!-- Customer Information -->
             <div class="customer-info">
                 <div class="info-row">
                     <input type="text" id="nameClient" name="nameClient" required placeholder="Nombre del cliente">
                     <label for="nameClient">Nombre Cliente</label>
                 </div>
-                
+
                 <div class="info-row">
                     <div class="info-group">
-                        <input type="number" id="idClient" name="idClient" required placeholder="Identificacion del cliente">
+                        <input type="number" id="idClient" name="idClient" required
+                            placeholder="Identificacion del cliente">
                         <label for="idClient">Identificacion</label>
                     </div>
                     <div class="info-group">
-                        <input type="text" id="telefonoClient" name="telefonoClient" required placeholder="Telefono del cliente">
+                        <input type="text" id="telefonoClient" name="telefonoClient" required
+                            placeholder="Telefono del cliente">
                         <label for="telefonoClient">Telefono Cliente</label>
                     </div>
                 </div>
-                
+
                 <div class="info-row">
                     <div class="info-group">
-                        <input type="text" id="direccionClient" name="direccionClient" required placeholder="Direccion del cliente">
+                        <input type="text" id="direccionClient" name="direccionClient" required
+                            placeholder="Direccion del cliente">
                         <label for="direccionClient">Direccion Cliente</label>
                     </div>
                     <div class="info-group">
-                        <input type="email" id="emailClient" name="emailClient" required placeholder="Email del cliente">
+                        <input type="email" id="emailClient" name="emailClient" required
+                            placeholder="Email del cliente">
                         <label for="emailClient">Email Cliente</label>
                     </div>
                 </div>
             </div>
-            
-            <!-- Invoice Table -->
+
             <div class="invoice-section">
-                <table class="invoice-table" id="invoice-table">
-                    <thead>
-                        <tr>
-                            <th class="column-quantity">Cantidad</th>
-                            <th class="column-product">Producto</th>
-                            <th class="column-unit-price">Valor Unitario</th>
-                            <th class="column-total-price">Valor Total</th>
-                            <th class="column-action"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="invoiceTableBody">
-                        <!-- Products will be loaded from cart -->
-                    </tbody>
-                </table>
-                
-                <div class="total-section">
-                    <div class="total-label">TOTAL A PAGAR:</div>
-                    <div class="total-value" id="totalValue">$0</div>
+                <div class="table-container">
+                    <table class="invoice-table" id="invoice-table">
+                        <thead>
+                            <tr>
+                                <th class="column-quantity">Cantidad</th>
+                                <th class="column-product">Producto</th>
+                                <th class="column-unit-price">Valor Unitario</th>
+                                <th class="column-total-price">Valor Total</th>
+                                <th class="column-action"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceTableBody">
+                            <!-- Products will be loaded from cart -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            
+
+          
+
+            <div class="total-section">
+                <div class="total-label">TOTAL A PAGAR:</div>
+                <div class="total-value" id="totalValue">$0</div>
+            </div>
+
             <!-- Action Buttons -->
             <div class="action-buttons">
                 <button class="cancel-btn" id="cancelBtn">
@@ -96,11 +106,14 @@
                 <button class="generate-btn" id="generateBtn">
                     <i class="fas fa-file-invoice"></i> Generar Factura
                 </button>
+
                 <a href="home.html" class="add-products-btn">
-                    <i class="fas fa-plus"></i> Agregar Productos
+                    <i class="fas fa-plus"></i> Agregar Producto
                 </a>
+
+
             </div>
-            
+
             <!-- Watermark -->
             <div class="watermark">
                 <div class="watermark-content">PharmaSoft</div>
@@ -113,4 +126,5 @@
     <script src="js/products-data.js"></script>
     <script src="js/factura.js"></script>
 </body>
+
 </html>

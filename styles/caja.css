@@ -54,6 +54,7 @@ body {
 .sidebar-menu {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .sidebar-menu a {
@@ -62,11 +63,14 @@ body {
 }
 
 .menu-item {
-  padding: 10px 20px;
+  padding: 12px 20px;
   color: #333;
   cursor: pointer;
   transition: background-color 0.2s;
-  font-size: 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .menu-item:hover {
@@ -76,6 +80,7 @@ body {
 .menu-item.active {
   color: #ff6b00;
   font-weight: 500;
+  background-color: #fff5f0;
 }
 
 .logout-btn {
